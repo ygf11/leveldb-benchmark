@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById('main'));
+
+        //初始化数据
+      var category = ['Random Reads', 'Random Writes', 'Seqential Writes'];
+      var ssdData = [184502, 69469, 375940];
+      var hddData = [152858, 65686, 185839];
+      
+      option = {
+	  legend: {},
+	  tooltip: {},
+        
+    
+	  //xAxis: [
+	  //    {type: 'category', gridIndex: 0},
+	  //    {type: 'category', gridIndex: 1}
+	  //],
+
+	  title:[{
+                text:'ssd',
+                //left: 'center'
+	      top:'10%'
+	  },
+            {
+                text:'hdd',
+                //left:'center'
+            
+                top: '50%'
+            }
+        ],
+
+	  xAxis: [{
+              type: 'value',
+              axisLine: {
+                  show: false
+              },
+              axisTick: {
+	          show: false
+              },
+	      max:400000	   
+          },{
+              gridIndex:1,
+              type:'value',
+              axisLine:{
+                  show: false
+              },
+              axisTick: {
+                  show: false
+              },
+	      max:400000
+          }],
+    
+	  //yAxis: [
+	  //    {gridIndex: 0},
+	  //    {gridIndex: 1}
+	  //],
+    
+	  yAxis: [{
+              type: 'category',
+              data: category,
+              splitLine: {show: false},
+              axisLine: {
+                  show: false
+              },
+              axisTick: {
+                show: false
+              },
+              offset: 10,
+              nameTextStyle: {
+                  fontSize: 15
+              },
+              axisLabel:{
+                formatter: '{value} ops/s'
+              }
+          },{
+              gridIndex:1,
+              type: 'category',
+              data: category,
+              splitLine: {show: false},
+              axisLine: {
+                  show: false
+              },
+              axisTick: {
+                  show: false
+              },
+              offset: 10,
+              nameTextStyle: {
+                  fontSize: 15
+              },
+              axisLabel:{
+                  formatter: '{value} ops/s'
+              }
+          }],
+    
+	  grid: [{
+              left: '30%',
+              right: '20%',
+              //height: '35%'                                                                                                                                                                                        
+              bottom: '55%',
+              //containLabel: true                                                                                                                                                                                   
+          },{
+            left: '30%',
+              right: "20%",
+              //height: '35%'                                                                                                                                                                                        
+              top:'55%'
+          }],
+	  
+	  //grid: [
+	  //    {bottom: '55%'},
+	  //    {top: '55%'}
+	  //],
+    
+	  //series: [
+          // These series are in the first grid.
+	  //    {type: 'bar', seriesLayoutBy: 'row'},
+	  //    {type: 'bar', seriesLayoutBy: 'row'},
+	  //    {type: 'bar', seriesLayoutBy: 'row'},
+          // These series are in the second grid.
+	  //    {type: 'bar', xAxisIndex: 1, yAxisIndex: 1},
+	  //    {type: 'bar', xAxisIndex: 1, yAxisIndex: 1},
+	  //    {type: 'bar', xAxisIndex: 1, yAxisIndex: 1},
+	  //    {type: 'bar', xAxisIndex: 1, yAxisIndex: 1}
+	  //]
+	  
+	  series: [
+            {
+                name: '数量',
+                type: 'bar',
+                data: ssdData,
+                barWidth: 14,
+                barGap: 10,
+                smooth: true,
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'right',
+	                offset: [5, -2],
+                        textStyle: {
+                            color: '#F68300',
+                            fontSize: 13
+                        }
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        barBorderRadius: 7
+                    },
+                    normal: {
+                        barBorderRadius: 7,
+                        color: new echarts.graphic.LinearGradient(
+                            0, 0, 1, 0,
+                            [
+                                {offset: 0, color: '#3977E6'},
+                                {offset: 1, color: '#37BBF8'}
+
+                            ]
+                        )
+                    }
+                }
+            }, 
+             {
+                gridIndex:1, 
+                name: 'operations',
+                type: 'bar',
+                data: hddData,
+                barWidth: 14,
+                barGap: 10,
+                smooth: true,
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'right',
+	                offset: [5, -2],
+                        textStyle: {
+                            color: '#F68300',
+                            fontSize: 13
+                        }
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        barBorderRadius: 7
+                    },
+                    normal: {
+                        barBorderRadius: 7,
+                        color: new echarts.graphic.LinearGradient(
+                            0, 0, 1, 0,
+                            [
+                                {offset: 0, color: '#3977E6'},
+                                {offset: 1, color: '#37BBF8'}
+
+                            ]
+                        )
+                    }
+                },
+                xAxisIndex:1,
+                yAxisIndex:1,
+                
+            }
+        ]
+
+};
+      
+        // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    </script>
+</body>
+</html>
