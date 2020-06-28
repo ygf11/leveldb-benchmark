@@ -9,7 +9,7 @@
 # compression_ratio:0.5
 # num: 1000000
 
-./db_bench --num=1000000 --benchmarks="fillseq,fillrandom,readrandom"  --use_existing_db=0 --reuse_logs=0 --db=bench_test
+./db_bench --num=1000000 --benchmarks="fillseq,fillrandom"  --use_existing_db=0 --reuse_logs=0 --db=bench_test
 
 
 ## baseline result
@@ -24,9 +24,13 @@
 # FileSize:   62.9 MB (estimated)
 # WARNING: Snappy compression is not enabled
 # ------------------------------------------------
+# ssd
 # fillseq      :       2.952 micros/op;   37.5 MB/s     
 # fillrandom   :       4.565 micros/op;   24.2 MB/s     
-# readrandom   :       3.637 micros/op; (1000000 of 1000000 found)
+# 
+# hdd
+# fillseq      :       5.099 micros/op;   21.7 MB/s     
+# fillrandom   :      14.589 micros/op;    7.6 MB/s
 
 
 ###------------------------------------------------------------------------------------------------###
@@ -38,7 +42,7 @@
 # compression_ratio:0.5
 # num: 1000000
 
-./db_bench --num=1000000 --benchmarks="fillseq,fillrandom,readrandom"  --use_existing_db=0 --reuse_logs=0 --db=bench_test
+./db_bench --num=1000000 --benchmarks="fillseq,fillrandom"  --use_existing_db=0 --reuse_logs=0 --db=bench_test
 
 ## large value result
 # LevelDB:    version 1.20
@@ -52,6 +56,9 @@
 # FileSize:   4783.6 MB (estimated)
 # WARNING: Snappy compression is not enabled
 # ------------------------------------------------
+# ssd
 # fillseq      :      91.057 micros/op;  104.9 MB/s     
 # fillrandom   :    1682.728 micros/op;    5.7 MB/s     
-# readrandom   :     386.712 micros/op; (1000000 of 1000000 found)
+# hdd
+# fillseq      :     459.282 micros/op;   20.8 MB/s     
+# fillrandom   :    5009.668 micros/op;    1.9 MB/s
