@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-    <div id="main" style="width: 900px;height:500px;"></div>
+    <div id="main" style="width: 900px;height:900px;"></div>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
       var myChart = echarts.init(document.getElementById('main'));
@@ -29,14 +29,15 @@
 	  //],
 
 	  title:[{
-                text:'ssd-sequential-writes',
+	         //text:'ssd',
+                text:'ssd-sequential-write',
                 //left: 'center'
 	      top:'10%'
 	  },
-            {
-                text:'hdd-sequential-writes',
-                //left:'center'
-            
+		 {
+		 // text:'hdd'   
+                     text:'hdd-sequential-write',
+                //left:'center'            
                 top: '50%'
             }
         ],
@@ -105,13 +106,13 @@
           }],
     
 	  grid: [{
-              left: '30%',
+              left: '20%',
               right: '10%',
               //height: '35%'                                                                                                                                                                                        
               bottom: '55%',
               //containLabel: true                                                                                                                                                                                   
           },{
-            left: '30%',
+            left: '20%',
               right: "10%",
               //height: '35%'                                                                                                                                                                                        
               top:'55%'

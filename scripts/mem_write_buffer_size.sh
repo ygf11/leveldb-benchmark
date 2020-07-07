@@ -4,7 +4,7 @@
 # key: 16 byte
 # value: 100 byte
 # write_buffer_size(default): need change
-# block_cache(default): 2M
+# block_cache(default): 8M
 # compression_ratio:0.5
 # num: 10000000
 
